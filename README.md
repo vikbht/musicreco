@@ -5,6 +5,10 @@
 **Repository**: [https://github.com/vikbht/musicreco](https://github.com/vikbht/musicreco)
 **Architecture**: [View Documentation](docs/ARCHITECTURE.md)
 
+| Home Page | Search Results |
+|:---:|:---:|
+| <img src="docs/images/home.png" width="400"> | <img src="docs/images/results.png" width="400"> |
+
 ## 🎵 Features
 - **Music Search**: Find any song, artist, or album.
 - **Vibe Engine**: Automatically detects the aesthetic (e.g., *Grunge, Disco, Synth-Pop*) based on genre and mood.
