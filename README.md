@@ -2,6 +2,8 @@
 
 **SonicStyle** is an interactive web application that bridges the gap between music and fashion. By analyzing the "vibe" of your favorite songs, artists, or albums, using the Apple Music API, it recommends a curated selection of fashion items from Amazon that match that specific aesthetic.
 
+**Repository**: [https://github.com/vikbht/musicreco](https://github.com/vikbht/musicreco)
+
 ## 🎵 Features
 - **Music Search**: Find any song, artist, or album.
 - **Vibe Engine**: Automatically detects the aesthetic (e.g., *Grunge, Disco, Synth-Pop*) based on genre and mood.
