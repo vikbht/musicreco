@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SonicStyle | Listen & Look the Part</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fa-solid fa-record-vinyl"></i> SonicStyle
+            </div>
+            <p class="subtitle">Match your fit to your beat.</p>
+        </header>
+
+        <section class="search-section">
+            <form action="/search" method="post" class="search-bar">
+                <input type="text" name="query" placeholder="Enter a song, artist, or album..." value="{{ query if query else '' }}" required>
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </section>
+
+        {% if error %}
+        <div class="error-card">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <p>{{ error }}</p>
+        </div>
+        {% endif %}
+
+        {% if song %}
+        <section class="results-container">
+            <!-- Music Vibe Card -->
+            <div class="vibe-card">
+                <div class="album-art">
+                    <img src="{{ song.artwork }}" alt="{{ song.name }}">
+                </div>
+                <div class="song-info">
+                    <h2>{{ song.name }}</h2>
+                    <h3>{{ song.artist }}</h3>
+                    <div class="tags">
+                        {% for genre in song.genres %}
+                        <span class="tag">{{ genre }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="vibe-verdict">
+                    <span class="vibe-label">Detected Vibe</span>
+                    <h1 class="vibe-title">{{ vibe.vibe }}</h1>
+                </div>
+            </div>
+
+            <!-- Fashion Grid -->
+            <div class="fashion-section">
+                <h3 class="section-title">Shop the Look</h3>
+                <div class="product-grid">
+                    {% for product in products %}
+                    <a href="{{ product.link }}" target="_blank" class="product-card">
+                        <div class="product-image">
+                            <img src="{{ product.image_url }}" alt="{{ product.title }}">
+                        </div>
+                        <div class="product-info">
+                            <h4>{{ product.title }}</h4>
+                            <span class="price">{{ product.price }}</span>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+    </div>
+
+</body>
+</html>
