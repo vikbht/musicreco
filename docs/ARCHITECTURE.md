@@ -33,21 +33,16 @@ C4Container
     Container_Boundary(c1, "SonicStyle Application") {
         Container(web_frontend, "Web Frontend", "HTML, CSS, JS (Jinja2)", "Delivers the user interface via server-side rendering.")
         Container(fastapi_app, "Backend API", "Python, FastAPI", "Handles request routing, orchestration, and business logic.")
-        
-        Component(vibe_service, "Vibe Service", "Python Class", "Translates music genres into fashion keywords (The Vibe Logic).")
-        Component(apple_client, "Apple Music Client", "Python Class", "Wrapper for Apple Music API interactions.")
-        Component(amazon_client, "Amazon Client", "Python Class", "Wrapper for Amazon Product API interactions.")
     }
+
+    System_Ext(apple_music, "Apple Music API", "Provides song details, genres, and artist information.")
+    System_Ext(amazon, "Amazon Product API", "Provides fashion product search results and affiliate links.")
 
     Rel(user, web_frontend, "Visits", "HTTPS")
     Rel(web_frontend, fastapi_app, "Submits Forms/Requests", "HTTPS")
     
-    Rel(fastapi_app, apple_client, "Uses", "Internal Call")
-    Rel(fastapi_app, vibe_service, "Uses", "Internal Call")
-    Rel(fastapi_app, amazon_client, "Uses", "Internal Call")
-    
-    Rel(apple_client, apple_music, "API Calls", "HTTPS")
-    Rel(amazon_client, amazon, "API Calls", "HTTPS")
+    Rel(fastapi_app, apple_music, "Fetches song data", "HTTPS")
+    Rel(fastapi_app, amazon, "Searches products", "HTTPS")
 ```
 
 ## Sequence Diagram: Search Flow
